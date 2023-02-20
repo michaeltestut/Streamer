@@ -2,16 +2,33 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom';
 import video from "../assets/video.mp4";
-import { Io, IoPlayCircleSharp } from "react-icons/io5"
+import { IoPlayCircleSharp } from "react-icons/io5"
 import { RiThumbUpFill, RiThumbDownFill } from "react-icons/ri"
 import { BsCheck } from "react-icons/bs"
 import { AiOutlinePlus } from "react-icons/ai"
 import { BiChevronDown } from "react-icons/bi"
+import { onAuthStateChanged } from 'firebase/auth';
+import { firebaseAuth } from '../utils/firebase-config';
+import axios from 'axios';
 
 
 export default function Card({ movieData, isLiked = false }) {
   const [isHovered, setIsHovered] = useState(false)
+  const [email, setEmail] = useState(undefined);
   const navigate = useNavigate();
+
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    if (currentUser) setEmail(currentUser.email);
+    else navigate("/")
+  });
+
+  const addToList = async () => {
+    try {
+      await axios.post("http://localhost:8000/api/user/add",{email,data:movieData})
+    } catch(err) {
+      console.log(err)
+    }
+  }
 
   return (
 
@@ -36,7 +53,7 @@ export default function Card({ movieData, isLiked = false }) {
                   {
                     isLiked ?
                       (<BsCheck title="Remove From List" />) :
-                      (<AiOutlinePlus title="Add To My List" />)
+                      (<AiOutlinePlus title="Add To My List" onClick={addToList} />)
                   }
                 </div>
                 <div className="info">
