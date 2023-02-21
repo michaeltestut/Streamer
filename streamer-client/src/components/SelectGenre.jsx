@@ -14,7 +14,7 @@ export default function SelectGenre({ genres, type }) {
                         genres,
                         genre: e.target.value,
                         type,
-                    }), console.log(e.target.value)
+                    }),
                 );
             }}
         >

@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Player from './pages/Player';
 import TV from './pages/TV'
 import Movies from './pages/Movies';
+import MyList from './pages/MyList'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route exact path="/player" element={<Player />} />
         <Route exact path="/tv" element={<TV />} />
         <Route exact path="/movies" element={<Movies />} />
+        <Route exact path="/mylist" element={<MyList />} />
         <Route exact path="/" element={<Home />} />
       </Routes>
   </BrowserRouter>

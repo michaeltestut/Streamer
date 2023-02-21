@@ -20,9 +20,24 @@ module.exports.addToLikedMovies = async (req, res) => {
             }
         } else {
             await User.create({ email, likedMovies: [data] });
+            console.log("movie added");
             return res.json({msg:"Movie added successfully"})
         }
-    } catch(error) {
+    } catch(err) {
         return res.json({ msg: "error adding movie" });
     }
 };
+
+module.exports.getLikedMovies = async (req, res) => {
+    try {
+        const { email } = req.params;
+        const user = await User.findOne({ email });
+        if (user) {return res.json({ msg: "success", movies: user.likedMovies })
+    }else {return res.json({msg:"User with given email not found"})
+        
+    }
+        
+    } catch(err) {
+        return res.json({msg:"error fetching movies"})
+    }
+}

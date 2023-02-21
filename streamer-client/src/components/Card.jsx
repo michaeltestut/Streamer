@@ -24,11 +24,14 @@ export default function Card({ movieData, isLiked = false }) {
 
   const addToList = async () => {
     try {
-      await axios.post("http://localhost:8000/api/user/add",{email,data:movieData})
-    } catch(err) {
-      console.log(err)
+      await axios.post("http://localhost:8000/api/user/add", {
+        email,
+        data: movieData,
+      });
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
   return (
 
