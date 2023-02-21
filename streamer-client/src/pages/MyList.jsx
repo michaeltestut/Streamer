@@ -1,4 +1,3 @@
-import axios from "axios";
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -55,16 +54,16 @@ export default function MyList() {
 }
 
 const Container = styled.div`
-  .content {
-    margin: 2.3rem;
-    margin-top: 8rem;
-    gap: 3rem;
-    h1 {
-      margin-left: 3rem;
+    .content {
+        margin: 2.3rem;
+        margin-top: 8rem;
+        gap: 3rem;
+        h1 {
+        margin-left: 3rem;
+        }
+        .grid {
+        flex-wrap: wrap;
+        gap: 1rem;
+        }
     }
-    .grid {
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-  }
 `;
