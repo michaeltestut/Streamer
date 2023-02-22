@@ -35,7 +35,8 @@ export default function Movies() {
         return () => (window.onscroll = null);
     };
     onAuthStateChanged(firebaseAuth, (currentUser) => {
-        if (!currentUser) navigate("/login");
+        if (currentUser) setUser(currentUser.uid);
+        else navigate("/login");
     });
     return (
         <Container>

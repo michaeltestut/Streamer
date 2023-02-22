@@ -35,7 +35,6 @@ export default function Navbar({ isScrolled }) {
     
     function logOut(){
         signOut(firebaseAuth);
-        navigate("/login")
     };
     
     return (

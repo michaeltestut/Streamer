@@ -24,7 +24,7 @@ export default function Card({ movieData, isLiked = false }) {
 
   onAuthStateChanged(firebaseAuth, (currentUser) => {
     if (currentUser) setEmail(currentUser.email);
-    else navigate("/")
+    else navigate("/login")
   });
 
   const addToList = async () => {
