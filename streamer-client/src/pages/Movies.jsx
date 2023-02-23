@@ -30,6 +30,8 @@ export default function Movies() {
         }
     }, [genresLoaded]);
 
+    const [user, setUser] = useState(undefined);
+
     window.onscroll = () => {
         setIsScrolled(window.pageYOffset === 0 ? false : true);
         return () => (window.onscroll = null);
